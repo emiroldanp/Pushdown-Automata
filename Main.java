@@ -25,7 +25,7 @@ public class Main {
             File file;
             Scanner in;
             try {
-                file = new File("/Users/emilianoroldan/Documents/GitHub/Top-down Parsing/test2.txt");
+                file = new File("/Users/emilianoroldan/Documents/GitHub/Top-down Parsing/test1.txt");
                 in = new Scanner(file);
             } catch (FileNotFoundException e1) {
                 throw e1;
