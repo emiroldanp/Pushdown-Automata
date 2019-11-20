@@ -1,3 +1,10 @@
+/**
+ * Java program to validate string acceptance from a determined grammar via top down parsing.
+ * 
+ * @author Carlos Maldonado A016
+ * @author Emiliano Roldan A01650141
+ */
+
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.ArrayList;
@@ -8,6 +15,12 @@ public class Main {
         public static HashMap<Character, ArrayList<String>> trans = new HashMap<>();
         public static HashMap<Character, Boolean> lambda = new HashMap<>();
         public static boolean accepted = false;
+        /**
+         * 
+         * @param args
+         * @throws IOException
+         * Main class that validates if the string is accepted or not.
+         */
         public static void main(String[] args) throws IOException {
             File file;
             Scanner in;
@@ -60,6 +73,12 @@ public class Main {
                 System.out.println("String is not accepted");
         }
 
+        /**
+         * 
+         * @param A
+         * @param test
+         * Function that will check if the given String is produced by the grammar.
+         */
         private static void verifyString(Stack<Character> A, String test) {
             if(!accepted) {
                 if(A.size() == 1 && test.equals("")) {
