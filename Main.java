@@ -25,13 +25,13 @@ public class Main {
         try {
             file = new File("/Users/emilianoroldan/Documents/GitHub/Top-down Parsing/test3.txt");
             in = new Scanner(file);
-        } catch (FileNotFoundException e1)
+        } catch (FileNotFoundException e1) {
             throw e1;
-
+        }
         String s = "";
         if(in.hasNext()) {
-            System.out.println("Set of non-terminal symbols: " + in.next());
-            System.out.println("Set of terminal symbols: " + in.next());
+            System.out.println("Non-terminal symbols: " + in.next());
+            System.out.println("Terminal symbols: " + in.next());
             s = in.next();
         }
         Character begin = s.charAt(0);
@@ -50,6 +50,8 @@ public class Main {
             trans.get(nonTerm).add(prod);
         } in.close();
 
+        System.out.println("Grammar productions: " + trans);
+        System.out.println("Grammar productions with lambda: " + lambda);
         Stack<Character> stack = new Stack<>();
         stack.add(begin);
         Scanner scanner = new Scanner(System.in);
