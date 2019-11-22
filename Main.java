@@ -16,7 +16,7 @@ public class Main {
     public static boolean accepted = false;
     /**
      * @param args
-     * @throws IOException
+     * @throws IOException Exception thrown if the file is not found.
      * Main class that validates if the string is accepted or not.
      */
     public static void main(String[] args) throws IOException {
@@ -66,8 +66,8 @@ public class Main {
             System.out.println("String is not accepted");
     }
     /**
-     * @param stack
-     * @param test
+     * @param stack This stack is used to add all the productions of the grammar.
+     * @param test The string that will be checked if is accepted or not.
      * Function that will check if the given String is produced by the grammar.
      */
     private static void verifyString(Stack<Character> stack, String test){
@@ -86,20 +86,20 @@ public class Main {
                     int count = 0;
                     if(lambda.containsKey(ch) && lambda.get(ch))
                         count++;
-                    StringBuilder sBuilder = new StringBuilder();
+                    StringBuilder attacher = new StringBuilder();
                     while (!stack.empty()) {
                         if(lambda.containsKey(stack.peek()) && lambda.get(stack.peek()))
                             count++;
-                        sBuilder.append(stack.pop());
+                        attacher.append(stack.pop());
                     }
     
-                    if(sBuilder.length() + 1 > test.length() + count)
+                    if(attacher.length() + 1 > test.length() + count)
                         return;
 
                     for (int i = 0; i < trans.get(ch).size(); i++) {
                         Stack<Character> tempStack = new Stack<>();
-                        for (int j = sBuilder.length() - 1; j >= 0; j--)
-                            tempStack.add(sBuilder.charAt(j));
+                        for (int j = attacher.length() - 1; j >= 0; j--)
+                            tempStack.add(attacher.charAt(j));
     
                         String s = trans.get(ch).get(i);
     
