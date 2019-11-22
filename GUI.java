@@ -1,123 +1,151 @@
 
-// import javax.swing.*;
-// import java.awt.*;
-// import java.awt.event.ActionEvent;
-// import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-// public class GUI extends JFrame {
-//     private static final long serialVersionUID = 1L;
-//     private JPanel wrapper;
-//     private JLabel title, insert1, insert2, insert3, txt;
-//     private JTextField nameTxt, stringAutomata, result, stringDisplay;
-//     private JButton verifyString;
+public class GUI extends JFrame {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    // JOptionPane.showMessageDialog(Wrapper, "couln't find the file or null
+    // String");
+    private JPanel wrapper; //This is the pane where all the stuff will be.
+    private JLabel tittle, instr1, instr2, instr3, txt;//This are the variables for the labels in the GUI
+    private JTextField nameTxt, stringAutomata, result, stringDisplay;//This are the text fields where the users can write all the struction nedded for the automarta.
+    private JButton checkString;//This is the boton that will action the automata cheking string method.
 
-//     public GUI(){
-//         /*
-//         *Constructor method that will initialize all the thing to make work the graphic user interface.
-//         */
-//         super("Top-down Parsing");
-//         initComponents();
-//         setLayout(new GridLayout(1, 1));
-//         setDefaultCloseOperation(EXIT_ON_CLOSE);
-//         setSize(900, 300);
-//         setVisible(true);
-//     }
+    public GUI(){
+        /*
+        *
+        *This is the constructor method that will initialize all the thing to make work the graphic user interface.
+        */
+        super("Part 2");//This is the tittle of the window of the GUI
+        initComponents();//This will initialize and add all the variables of the graphic user interface.
+        setLayout(new GridLayout(1, 1));//This is the layout of the window, is a 1 row by 1 column.
+        setDefaultCloseOperation(EXIT_ON_CLOSE);//This will close all the process when pressing the X in the window.
+        setSize(900, 300);//This is the size of the window.
+        setVisible(true);//This will set the window visible to the user
+    }
 
-//     public void initComponents(){
-//         /*
-//         *This method will initialize all the variables and set all the setting needed to display a window to the user.
-//         */
-//         wrapper = new JPanel();
-//         title = new JLabel("Lambda - N D F A");
-//         insert1 = new JLabel("Insert the name of the .txt file");
-//         insert2 = new JLabel("Insert the string");
-//         insert3 = new JLabel("The string was:");
-//         txt = new JLabel(".txt");
-//         nameTxt = new JTextField();
-//         stringAutomata = new JTextField();
-//         result = new JTextField();
-//         stringDisplay = new JTextField();
-//         verifyString = new JButton("Check string");
+    public void initComponents(){
+        /*
+        *
+        *This method will initialize all the variables and set all the setting needed to display a window to the user.
+        *
+        */
+        //The next block of code will initialize all the variables needed to the window.
+        wrapper = new JPanel();
+        tittle = new JLabel("Top-down Parsing");
+        instr1 = new JLabel("Insert the name of the .txt file");
+        instr2 = new JLabel("Insert the string");
+        instr3 = new JLabel("The string was:");
+        txt = new JLabel(".txt");
+        nameTxt = new JTextField();
+        stringAutomata = new JTextField();
+        result = new JTextField();
+        stringDisplay = new JTextField();
+        checkString = new JButton("Check string");
 
-//         title.setFont(new Font("C", Font.BOLD, 18));
-//         title.setHorizontalAlignment(JLabel.CENTER);
-//         insert1.setHorizontalAlignment(JLabel.CENTER);
-//         insert2.setHorizontalAlignment(JLabel.CENTER);
-//         insert3.setHorizontalAlignment(JLabel.RIGHT);
-//         result.setEditable(false);
-//         stringDisplay.setEditable(false);
-//         stringDisplay.setForeground(Color.black);
+        //The block of code will set all the setting needed to make the GUI pretty
+        tittle.setFont(new Font("C", Font.BOLD, 18));
+        tittle.setHorizontalAlignment(JLabel.CENTER);
+        instr1.setHorizontalAlignment(JLabel.CENTER);
+        instr2.setHorizontalAlignment(JLabel.CENTER);
+        instr3.setHorizontalAlignment(JLabel.RIGHT);
+        result.setEditable(false);
+        stringDisplay.setEditable(false);
+        stringDisplay.setForeground(Color.black);
 
-//         verifyString.addActionListener(new checkButtonListener());
-//         wrapper.setLayout(new GridLayout(6, 5));
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(title);
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(new JLabel(""));
+        //This line of code add the button and action listener to add funcitonality when is click.
+        checkString.addActionListener(new checkButtonListener());
+        //This will add the layout of the wrapper and how to be display.
+        wrapper.setLayout(new GridLayout(6, 5));
 
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(insert1);
-//         wrapper.add(nameTxt);
-//         wrapper.add(txt);
-//         wrapper.add(new JLabel(""));
+        //The rest of lines are the structure of the window row to row.
+        //First row
+        wrapper.add(new JLabel(""));
+        wrapper.add(new JLabel(""));
+        wrapper.add(tittle);
+        wrapper.add(new JLabel(""));
+        wrapper.add(new JLabel(""));
 
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(insert2);
-//         wrapper.add(stringAutomata);
-//         wrapper.add(verifyString);
-//         wrapper.add(new JLabel(""));
+        //Second row
+        wrapper.add(new JLabel(""));
+        wrapper.add(instr1);
+        wrapper.add(nameTxt);
+        wrapper.add(txt);
+        wrapper.add(new JLabel(""));
 
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(new JLabel(""));
+        //third row
+        wrapper.add(new JLabel(""));
+        wrapper.add(instr2);
+        wrapper.add(stringAutomata);
+        wrapper.add(checkString);
+        wrapper.add(new JLabel(""));
 
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(insert3);
-//         wrapper.add(stringDisplay);
-//         wrapper.add(result);
-//         wrapper.add(new JLabel(""));
+        //Fourth row
+        wrapper.add(new JLabel(""));
+        wrapper.add(new JLabel(""));
+        wrapper.add(new JLabel(""));
+        wrapper.add(new JLabel(""));
+        wrapper.add(new JLabel(""));
 
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(new JLabel(""));
-//         wrapper.add(new JLabel(""));
+        //Fifth row
+        wrapper.add(new JLabel(""));
+        wrapper.add(instr3);
+        wrapper.add(stringDisplay);
+        wrapper.add(result);
+        wrapper.add(new JLabel(""));
 
-//         add(wrapper);
-//     }
+        //Sixth row
+        wrapper.add(new JLabel(""));
+        wrapper.add(new JLabel(""));
+        wrapper.add(new JLabel(""));
+        wrapper.add(new JLabel(""));
+        wrapper.add(new JLabel(""));
 
-//     public class checkButtonListener implements ActionListener{
-//         public void actionPerformed(ActionEvent e){
-//             /*
-//             *This method will add funcionality to the button when is click.
-//             */
+        //after adding everything we just need to add the wrapper to the GUI.
+        add(wrapper);
+    }
 
-//             Automata auto = new Automata();//This will initialize the object automata where all the magic is being made.
-//             String name = nameTxt.getText();//This will get the name of the .txt file from the text field
-//             String sTest = stringAutomata.getText();//This will get the string to be tested by the automata
-//             boolean res = false;//This is the variable to indicate if the string was accepted by the automata or not
+    public class checkButtonListener implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            /*
+            *
+            *This method will add funcionality to the button when is click.
+            *
+            */
 
-//             if(!name.equals("") || !sTest.equals("")){
-//                 try {
-//                     res = auto.processString(name, sTest);
-//                 } catch (Exception ex) {
-//                     System.err.println("File is not found");
-//                 }
+            Automata auto = new Automata();//This will initialize the object automata where all the magic is being made.
+            String name = nameTxt.getText();//This will get the name of the .txt file from the text field
+            String sTest = stringAutomata.getText();//This will get the string to be tested by the automata
+            boolean res = false;//This is the variable to indicate if the string was accepted by the automata or not
 
-//                 if(res){
-//                     result.setText("Accepted");
-//                 }else{
-//                     result.setText("Not Accepted");
-//                 }
+            if(!name.equals("") || !sTest.equals("")){
+                //we need a try and catch block because in case the file is not in the project folder.
+                try {
+                    //This will send the information needed to the automata to create the automata and test the stirng.
+                    res = auto.processString(name, sTest);
+                } catch (Exception ex) {
+                    System.err.println("file not found");//Mesasge in case the file is not found.
+                }
 
-//                 stringAutomata.setText("");
-//                 stringDisplay.setText(sTest);
-//             }else{
-//                 JOptionPane.showMessageDialog(wrapper, "both fields must have something");
-//             }
-//         }
-//     }
-// }
+                //this will put the result if the string was acepted by the automata or not.
+                if(res){
+                    result.setText("Accepted");
+                }else{
+                    result.setText("Not Accepted");
+                }
+
+                //This will reset the JTextFields where the user can test another string
+                stringAutomata.setText("");
+                //This will add the string to the JText field to check the result of the automata.
+                stringDisplay.setText(sTest);
+            }else{
+                JOptionPane.showMessageDialog(wrapper, "both fields must have something");
+            }
+        }
+    }
+}
